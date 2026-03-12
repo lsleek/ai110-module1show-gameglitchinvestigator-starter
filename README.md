@@ -38,11 +38,14 @@ It wrote the code, ran away, and now the game is unplayable.
   - Made difficulty changes reset the game state and generate a new secret within the correct range.
 
 ## 📸 Demo
+screenshots of working game with correct logic and testing
 
 ![Screenshot of my tests](screenshots/tests.png)
 
 ![Screenshot of the game](screenshots/game.png)
 
+screenshot of git commits + messages
+![Screenshot of the game](screenshots/git-commits.png)
 
 ## 🚀 Stretch Features
 1. I included more test cases that cover edge cases
