@@ -11,6 +11,22 @@ from logic_utils import (
     update_score,
 )
 
+
+def get_hot_cold_hint(guess, secret):
+    """Return a hot/cold emoji string based on guess distance from secret."""
+    try:
+        distance = abs(int(guess) - int(secret))
+    except Exception:
+        return ""
+
+    if distance == 0:
+        return "🎉 Perfect!"
+    if distance <= 3:
+        return "🔥 Hot"
+    if distance <= 10:
+        return "🟠 Warm"
+    return "❄️ Cold"
+
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
 st.title("🎮 Game Glitch Investigator")
@@ -84,19 +100,39 @@ if submit:
     ok, guess_int, err = parse_guess(raw_guess)
 
     if not ok:
-        st.session_state.history.append(raw_guess)
+        st.session_state.history.append(
+            {
+                "guess": raw_guess,
+                "outcome": "Invalid",
+                "hint": err,
+            }
+        )
         st.error(err)
     else:
-        st.session_state.history.append(guess_int)
-
         secret = get_comparison_secret(
             st.session_state.secret, st.session_state.attempts
         )
 
         outcome, message = check_guess(guess_int, secret)
+        hot_cold = get_hot_cold_hint(guess_int, secret)
+
+        st.session_state.history.append(
+            {
+                "guess": guess_int,
+                "outcome": outcome,
+                "hint": message,
+                "hot_cold": hot_cold,
+            }
+        )
 
         if show_hint:
-            st.warning(message)
+            hint_msg = f"{message} {hot_cold}"
+            if outcome == "Win":
+                st.success(hint_msg)
+            elif outcome == "Too High":
+                st.warning(hint_msg)
+            else:
+                st.info(hint_msg)
 
         st.session_state.score = update_score(
             current_score=st.session_state.score,
@@ -119,6 +155,11 @@ if submit:
                     f"The secret was {st.session_state.secret}. "
                     f"Score: {st.session_state.score}"
                 )
+
+    # Show a simple session summary table (guess + outcome + hot/cold)
+    if st.session_state.history:
+        st.subheader("Session summary")
+        st.table(st.session_state.history)
 
 st.divider()
 st.caption("Built by an AI that claims this code is production-ready.")

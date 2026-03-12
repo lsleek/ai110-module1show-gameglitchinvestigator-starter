@@ -45,5 +45,13 @@ It wrote the code, ran away, and now the game is unplayable.
 
 
 ## 🚀 Stretch Features
+1. I included more test cases that cover edge cases
+![Screenshot of my stretch features](screenshots/stretch-feature3.png) 
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+
+2. Added structured, user-friendly output: hints now include color-coded messages and Hot/Warm/Cold emoji feedback.
+![Screenshot of my stretch features](screenshots/strech-feature2.png)
+
+3. Added a session summary table so players can see their guess history and outcomes in an easy-to-read format.
+
+![Screenshot of my stretch features](screenshots/strech-feature.png)
