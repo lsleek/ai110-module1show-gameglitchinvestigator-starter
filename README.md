@@ -25,13 +25,24 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- ✅ **Describe the game's purpose:** This is a number-guessing game where the player must guess a secret number in a limited number of attempts. The game gives feedback on whether the guess is higher or lower than the secret.
+
+- ✅ **Detail which bugs you found:**
+  - Hint messages were inverted (too-high told the player to go higher and vice versa).
+  - The attempt counter was off by one because it started at 1, making the UI show fewer remaining attempts.
+  - Changing difficulty updated the displayed range but did not update the secret number generation range.
+
+- ✅ **Explain what fixes you applied:**
+  - Corrected the hint logic so hints match the actual comparison.
+  - Initialized attempts to 0 and adjusted scoring so the first guess counts as attempt 1.
+  - Made difficulty changes reset the game state and generate a new secret within the correct range.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![Screenshot of my tests](screenshots/tests.png)
+
+![Screenshot of the game](screenshots/game.png)
+
 
 ## 🚀 Stretch Features
 
