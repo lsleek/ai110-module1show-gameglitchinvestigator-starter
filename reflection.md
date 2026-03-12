@@ -3,10 +3,10 @@
 Answer each question in 3 to 5 sentences. Be specific and honest about what actually happened while you worked. This is about your process, not trying to sound perfect.
 
 ## 1. What was broken when you started?
+1. guess feedback output was inverted. When I guessed a higher number than the score, it told be to go higher and when I guessed lower, it says to go lower. 
+2. Number of attemps is off by 1. It's one more than the actual number of attemps.It starts at 1 instead of 0
+3. Changing difficult level doesn't change the range of numbers that I can enter
 
-- What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
-  (for example: "the hints were backwards").
 
 ---
 
